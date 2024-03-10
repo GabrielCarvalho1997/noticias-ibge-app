@@ -66,6 +66,24 @@ const NewsPage = () => {
     );
   }
 
+  if (isLoading) {
+    return (
+      <View style={tailwind`flex-1 justify-center items-center`}>
+        <Text style={tailwind`text-2xl text-center`}>Carregando...</Text>
+      </View>
+    );
+  }
+
+  if (isError) {
+    return (
+      <View style={tailwind`flex-1 justify-center items-center`}>
+        <Text style={tailwind`text-2xl text-center`}>
+          Ocorreu um erro ao carregar as notícias
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={tailwind`w-full`}>

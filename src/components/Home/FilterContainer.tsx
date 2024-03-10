@@ -45,7 +45,6 @@ const FilterContainer = ({ setFilters }: FilterContainerProps) => {
     const filters: any = {
       de: data.date.from?.toISOString(),
       ate: data.date.to?.toISOString(),
-      destaque: data.destaque,
     };
 
     if (data.introsize) {
@@ -55,7 +54,6 @@ const FilterContainer = ({ setFilters }: FilterContainerProps) => {
     if (data.busca) {
       filters.busca = data.busca;
     }
-
     setFilters(filters);
     setModalVisible(false);
   };
@@ -122,30 +120,21 @@ const FilterContainer = ({ setFilters }: FilterContainerProps) => {
             </View>
             <TextInput
               {...register("busca")}
+              onChangeText={(text) => setValue("busca", text)}
               placeholder="Insira um termo de busca"
               style={tailwind`w-full bg-purple-300 rounded-full`}
             />
             <TextInput
-              {...register("destaque")}
+              {...register("introsize")}
+              onChangeText={(text) => setValue("introsize", Number(text))}
               placeholder="Tamanho do texto"
               keyboardType="numeric"
               style={tailwind`w-full bg-purple-300 rounded-full`}
             />
-            {/* <Switch
-              value={getValues("destaque")}
-              onValueChange={(value) => setValue("destaque", value)}
-            /> */}
             <View style={tailwind`w-full flex-row justify-around items-center`}>
               <Pressable
-                onPress={clearFilters}
-                style={tailwind`w-32 h-10 rounded-full justify-center items-center bg-red-500`}
-              >
-                <Text>Limpar</Text>
-              </Pressable>
-
-              <Pressable
                 onPress={handleSubmit(onSubmit)}
-                style={tailwind`w-32 h-10 rounded-full justify-center items-center bg-purple-500`}
+                style={tailwind`w-full h-10 rounded-full justify-center items-center bg-purple-500`}
               >
                 <Text>Filtrar</Text>
               </Pressable>

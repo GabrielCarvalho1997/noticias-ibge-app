@@ -33,6 +33,35 @@ const Home = () => {
     queryFn: queryFn,
   });
 
+  if (data?.count === 0) {
+    return (
+      <View style={tailwind`flex justify-center items-center w-full my-6`}>
+        <Text style={tailwind`text-2xl text-center`}>
+          Nenhum resultado encontrado
+        </Text>
+        <FilterContainer setFilters={setFilters} />
+      </View>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <View style={tailwind`flex justify-center items-center w-full my-6`}>
+        <Text style={tailwind`text-2xl text-center`}>Carregando...</Text>
+      </View>
+    );
+  }
+
+  if (isError) {
+    return (
+      <View style={tailwind`flex justify-center items-center w-full my-6`}>
+        <Text style={tailwind`text-2xl text-center`}>
+          Ocorreu um erro ao carregar as notícias
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={tailwind`flex justify-center items-center w-full`}>
