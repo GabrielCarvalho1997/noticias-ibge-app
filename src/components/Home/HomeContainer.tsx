@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
 import tailwind from "twrnc";
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from "../../constants";
 import { Params } from "../../interface/NewsInterface";
 import { getAllNews } from "../../services/getAllNews";
 import { getFilteredNews } from "../../services/getFilteredNews";
-import { Button } from "../ui/button";
 import CardContainer from "./CardContainer";
 import FilterContainer from "./FilterContainer";
 
@@ -33,12 +32,11 @@ const HomeContainer = () => {
     queryFn: queryFn,
   });
 
-  console.log(data);
   return (
     <View style={tailwind`flex justify-center items-center w-full`}>
       <FlatList
         data={data?.items}
-        ListHeaderComponent={() => <FilterContainer />}
+        ListHeaderComponent={() => <FilterContainer setFilters={setFilters} />}
         renderItem={({ item }) => {
           return <CardContainer key={item.id} news={item} />;
         }}
@@ -46,9 +44,14 @@ const HomeContainer = () => {
         ListFooterComponent={() =>
           data &&
           data?.count > 12 && (
-            <Button onTouchEnd={() => setPerPage(perPage + 12)}>
-              Ver mais
-            </Button>
+            <Pressable
+              style={tailwind`bg-purple-950 w-full h-12 justify-center items-center mt-4`}
+              onPress={() => setPerPage(perPage + 12)}
+            >
+              <Text style={tailwind`text-white text-lg font-bol`}>
+                Carregar mais
+              </Text>
+            </Pressable>
           )
         }
       />

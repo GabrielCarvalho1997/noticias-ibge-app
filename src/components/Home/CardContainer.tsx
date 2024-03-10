@@ -12,11 +12,11 @@ const CardContainer = ({ news }: CardContainerProps) => {
   const images = news.imagens ? JSON.parse(news.imagens) : [];
 
   return (
-    <Card style={tailwind`bg-red-500 mx-4 my-8`}>
-      <CardContent style={tailwind`gap-1`}>
+    <Card style={tailwind`bg-purple-300 mx-4 my-8 `}>
+      <CardContent style={tailwind`gap-4`}>
         <CardImage source={{ uri: API_URL_IMAGE + images.image_intro }} />
-        <CardTitle>{news.titulo}</CardTitle>
-        <CardText>{news.introducao}</CardText>
+        <CardTitle style={tailwind`text-purple-950`}>{news.titulo}</CardTitle>
+        <CardText style={tailwind` text-justify`}>{news.introducao}</CardText>
       </CardContent>
       <CardContent>
         <CardText>

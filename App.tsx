@@ -9,6 +9,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaView style={styles.container}>
         <HomeContainer />
+        {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
     </QueryClientProvider>
   );

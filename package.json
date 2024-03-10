@@ -10,13 +10,18 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.25.0",
+    "@types/react-native-calendar-picker": "^8.0.0",
+    "@types/react-native-vector-icons": "^6.4.18",
     "axios": "^1.6.7",
+    "date-fns": "^3.3.1",
     "expo": "~50.0.11",
     "expo-status-bar": "~1.11.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-hook-form": "^7.51.0",
     "react-native": "0.73.4",
+    "react-native-calendar-picker": "^8.0.1",
+    "react-native-vector-icons": "^10.0.3",
     "twrnc": "^4.1.0",
     "undefined": "@/components/icon"
   },
