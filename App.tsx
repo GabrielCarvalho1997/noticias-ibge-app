@@ -1,25 +1,21 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SafeAreaView, StyleSheet } from "react-native";
-import HomeContainer from "./src/components/Home/HomeContainer";
+import Home from "./src/pages/Home";
+import NewsPage from "./src/pages/News";
 
 export default function App() {
   const queryClient = new QueryClient();
+  const Stack = createNativeStackNavigator();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SafeAreaView style={styles.container}>
-        <HomeContainer />
-        {/* <StatusBar style="auto" /> */}
-      </SafeAreaView>
-    </QueryClientProvider>
+    <NavigationContainer>
+      <QueryClientProvider client={queryClient}>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="News" component={NewsPage} />
+        </Stack.Navigator>
+      </QueryClientProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

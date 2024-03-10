@@ -38,7 +38,14 @@ const HomeContainer = () => {
         data={data?.items}
         ListHeaderComponent={() => <FilterContainer setFilters={setFilters} />}
         renderItem={({ item }) => {
-          return <CardContainer key={item.id} news={item} />;
+          return (
+            <CardContainer
+              key={item.id}
+              news={item}
+              page={page}
+              perPage={perPage}
+            />
+          );
         }}
         keyExtractor={(item) => item.id.toString()}
         ListFooterComponent={() =>

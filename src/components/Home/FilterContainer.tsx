@@ -74,7 +74,7 @@ const FilterContainer = ({ setFilters }: FilterContainerProps) => {
           style={tailwind`w-full h-full flex justify-center items-center mt-6 relative`}
         >
           <View
-            style={tailwind`w-full rounded-xl px-5 py-8 pt-20 items-center shadow-xl gap-6 bg-purple-950 relative`}
+            style={tailwind`w-full rounded-xl px-5 py-8 pt-20 items-center shadow-xl gap-6 bg-purple-700 relative`}
           >
             <Pressable
               onPress={() => setModalVisible(!modalVisible)}
