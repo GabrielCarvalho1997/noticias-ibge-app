@@ -3,7 +3,11 @@
   "components": {
     "directory": "src/components/ui",
     "installed": [
-      "card"
+      "card",
+      "button",
+      "icon",
+      "text input",
+      "switch"
     ]
   }
 }

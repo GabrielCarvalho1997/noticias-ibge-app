@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
+import tailwind from "twrnc";
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from "../../constants";
 import { Params } from "../../interface/NewsInterface";
 import { getAllNews } from "../../services/getAllNews";
 import { getFilteredNews } from "../../services/getFilteredNews";
+import { Button } from "../ui/button";
 import CardContainer from "./CardContainer";
+import FilterContainer from "./FilterContainer";
 
 const HomeContainer = () => {
   const [page, setPage] = useState<number>(DEFAULT_PAGE);
@@ -32,24 +35,25 @@ const HomeContainer = () => {
 
   console.log(data);
   return (
-    <View style={styles.container}>
-      <Text>Leslye linda e xerosa</Text>
+    <View style={tailwind`flex justify-center items-center w-full`}>
       <FlatList
         data={data?.items}
-        renderItem={({ item }) => <CardContainer key={item.id} news={item} />}
+        ListHeaderComponent={() => <FilterContainer />}
+        renderItem={({ item }) => {
+          return <CardContainer key={item.id} news={item} />;
+        }}
         keyExtractor={(item) => item.id.toString()}
+        ListFooterComponent={() =>
+          data &&
+          data?.count > 12 && (
+            <Button onTouchEnd={() => setPerPage(perPage + 12)}>
+              Ver mais
+            </Button>
+          )
+        }
       />
     </View>
   );
 };
 
 export default HomeContainer;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
